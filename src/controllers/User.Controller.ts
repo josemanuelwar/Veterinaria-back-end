@@ -21,7 +21,6 @@ class UserController {
                 return response.status(401).json({ message: 'Credenciales incorrectas' });
             }
             const token=createdToken({userId:user.id, email});
-            console.log(token);
             
             response.status(200).json({ token });
 
@@ -52,7 +51,7 @@ class UserController {
                 data: newUser,
             });
         } catch (error) {
-            response.status(500).json({ message: 'Error en el servidor' });
+            response.status(500).json({ error: 'Error en el servidor' });
         }
     };
 }

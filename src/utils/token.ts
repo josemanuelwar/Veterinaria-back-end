@@ -2,7 +2,7 @@ import Jwt from "jsonwebtoken";
 
 const SECRET_PRIVATE_KEY =  process.env.SECRET_KEY  || "holas";
 
-interface JwtPayload {
+export interface JwtPayload {
   userId: number
   email: string
 }

@@ -4,9 +4,6 @@ class RolService {
 
     public async findName(name: string) {
         try {
-            console.log(name);
-            
-
             return await prisma.role.findFirst({
                 where: {
                     name
