@@ -8,9 +8,15 @@ class UserService {
         let esValida = false;
         const user = await prisma.user.findUnique({
             where: { email },
-            select: { password: true, id: true, email:true }
-        });
-
+            include:{
+                rolesUser:{
+                    include:{
+                        role:true
+                    }
+                },
+            },
+        });    
+        
         if (!user) {
             return {user, esValida};
         }

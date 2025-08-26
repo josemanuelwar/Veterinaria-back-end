@@ -5,6 +5,7 @@ const SECRET_PRIVATE_KEY =  process.env.SECRET_KEY  || "holas";
 export interface JwtPayload {
   userId: number
   email: string
+  roles: any
 }
 
 export const createdToken= (payload:JwtPayload)=>{
@@ -14,7 +15,5 @@ export const createdToken= (payload:JwtPayload)=>{
 }
 
 export const verficationToken=(token: string)=>{
-
     return Jwt.verify(token, SECRET_PRIVATE_KEY) as JwtPayload
-
 }

@@ -13,14 +13,14 @@ class UserController {
 
     public login = async (request: Request, response: Response) => {
         try {
-
             const { email, password } = request.body;
             const { user, esValida } = await this.service.validarLogin(email, password);
 
             if (!esValida || !user) {
                 return response.status(401).json({ message: 'Credenciales incorrectas' });
             }
-            const token=createdToken({userId:user.id, email});
+            const roles = user.rolesUser.map(rol => rol.role.name);
+            const token=createdToken({userId:user.id, email, roles});
             
             response.status(200).json({ token });
 
